@@ -15,7 +15,8 @@ public interface ItemVendaRepository extends BaseRepository<ItemVenda>{
 	
 	@Query(value = "SELECT i.descricao, i.valor_colaborador as valorColaborador, "
 			+ "i.quantidade, i.porcentagem_colaborador as porcentagemColaborador, "
-			+ "v.data_venda as dataVenda , i.valor, cc.nome as nomeVendedor FROM item_venda i "
+			+ "v.data_venda as dataVenda , i.valor, cc.nome as nomeVendedor,"
+			+ "v.forma_pagamento as formaPagamento FROM item_venda i "
 			+ "INNER JOIN venda v on v.cod = i.venda_cod "
 			+ "INNER JOIN produto p ON p.cod = i.cod_produto "
 			+ "INNER JOIN colaborador c ON c.cod = p.colaborador_cod "

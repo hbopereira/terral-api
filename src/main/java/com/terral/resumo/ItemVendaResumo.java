@@ -12,4 +12,5 @@ public interface ItemVendaResumo {
 	Date getDataVenda();
 	BigDecimal getValor();
 	String getNomeVendedor();
+	String getFormaPagamento();
 }
