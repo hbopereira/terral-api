@@ -34,12 +34,22 @@ public class VendaService extends BaseService<Venda, VendaRepository> {
 	}
 
 	@Transactional
+	public void setarVendasComoPago(List<Long> listaCodigosVenda) {
+		if (listaCodigosVenda.size() > 0) {
+			listaCodigosVenda.stream().forEach(v -> {
+				vendaRepository.setarVendasComoPago(v);
+			});
+		}
+	}
+
+	@Transactional
 	public List<Venda> listarPorDataEVendedor(Date dataInicial, Date dataFinal, Long codVendedor) {
 		return vendaRepository.listarPorDataEVendedor(dataInicial, dataFinal, codVendedor);
 	}
 
 	@Transactional
-	public List<ItemVendaResumo> listarDadosRelatorioProdutoColaborador(Date dataInicial, Date dataFinal, Long codVendedor) {
+	public List<ItemVendaResumo> listarDadosRelatorioProdutoColaborador(Date dataInicial, Date dataFinal,
+			Long codVendedor) {
 		return itemVendaRepository.listarDadosRelatorioProdutoColaborador(dataInicial, dataFinal, codVendedor);
 	}
 

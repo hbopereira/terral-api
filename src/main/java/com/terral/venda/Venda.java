@@ -37,6 +37,7 @@ public class Venda extends BaseEntity implements Serializable {
 	private BigDecimal valorVendedor;
 	private String formaPagamento;
 	private String nomeCliente;
+	private Boolean pago;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "vendedor_cod", referencedColumnName = "cod", nullable = false)
@@ -121,5 +122,15 @@ public class Venda extends BaseEntity implements Serializable {
 	public void setPercentualDesconto(BigDecimal percentualDesconto) {
 		this.percentualDesconto = percentualDesconto;
 	}
+
+	public Boolean getPago() {
+		return pago;
+	}
+
+	public void setPago(Boolean pago) {
+		this.pago = pago;
+	}
+	
+	
 
 }

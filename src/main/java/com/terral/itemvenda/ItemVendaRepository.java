@@ -22,7 +22,8 @@ public interface ItemVendaRepository extends BaseRepository<ItemVenda>{
 			+ "INNER JOIN colaborador c ON c.cod = p.colaborador_cod "
 			+ "INNER JOIN colaborador cc on cc.cod = v.vendedor_cod "
 			+ "WHERE (:codVendedor IS NULL OR c.cod =:codVendedor) "
-			+ "AND v.data_venda BETWEEN :dataInicial AND :dataFinal ", nativeQuery = true)
+			+ "AND v.data_venda BETWEEN :dataInicial AND :dataFinal "
+			+ "ORDER BY v.data_venda ", nativeQuery = true)
 	public List<ItemVendaResumo> listarDadosRelatorioProdutoColaborador(@Param("dataInicial") Date dataInicial,
 			@Param("dataFinal") Date dataFinal, @Param("codVendedor") Long codVendedor);
 	
