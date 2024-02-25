@@ -1,5 +1,6 @@
 package com.terral.venda;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +41,15 @@ public class VendaService extends BaseService<Venda, VendaRepository> {
 				vendaRepository.setarVendasComoPago(v);
 			});
 		}
+	}
+	
+	public List<Venda> listarPorDia(){
+		LocalDate mesReferencia = LocalDate.now();
+		LocalDate primeiroDia = mesReferencia.withDayOfMonth(1);
+		LocalDate ultimoDia = mesReferencia.withDayOfMonth(mesReferencia.lengthOfMonth());
+		Date dataInicial = java.sql.Date.valueOf(primeiroDia);
+		Date dataFinal = java.sql.Date.valueOf(ultimoDia);
+		return vendaRepository.listarPorDataEVendedor(dataInicial, dataFinal, null);
 	}
 
 	@Transactional

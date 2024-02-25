@@ -43,6 +43,11 @@ public class VendaController extends BaseController<Venda, VendaRepository, Vend
 			@RequestParam("dataFinal") Date dataFinal, @RequestParam(required = false) Long codVendedor) {
 		return vendaService.listarPorDataEVendedor(dataInicial, dataFinal, codVendedor);
 	}
+	
+	@GetMapping("/listarPorDia")
+	public List<Venda> listarPorDia() {
+		return vendaService.listarPorDia();
+	}
 
 	@GetMapping("/produtoColaborador")
 	public List<ItemVendaResumo> listarDadosRelaorioComissaoVendedores(@RequestParam("dataInicial") Date dataInicial,
