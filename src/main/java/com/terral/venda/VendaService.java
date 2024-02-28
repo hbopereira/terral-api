@@ -35,10 +35,14 @@ public class VendaService extends BaseService<Venda, VendaRepository> {
 	}
 
 	@Transactional
-	public void setarVendasComoPago(List<Long> listaCodigosVenda) {
-		if (listaCodigosVenda.size() > 0) {
-			listaCodigosVenda.stream().forEach(v -> {
-				vendaRepository.setarVendasComoPago(v);
+	public void setarVendasIntesVendaComoPago(List<Long> listaCodigos, Boolean isVenda) {
+		if (listaCodigos.size() > 0) {
+			listaCodigos.stream().forEach(item -> {
+				if(isVenda) {
+					vendaRepository.setarVendasComoPago(item);
+				} else {
+					itemVendaRepository.setarItensVendasComoPago(item);
+				}
 			});
 		}
 	}

@@ -43,7 +43,7 @@ public class VendaController extends BaseController<Venda, VendaRepository, Vend
 			@RequestParam("dataFinal") Date dataFinal, @RequestParam(required = false) Long codVendedor) {
 		return vendaService.listarPorDataEVendedor(dataInicial, dataFinal, codVendedor);
 	}
-	
+
 	@GetMapping("/listarPorDia")
 	public List<Venda> listarPorDia() {
 		return vendaService.listarPorDia();
@@ -54,10 +54,11 @@ public class VendaController extends BaseController<Venda, VendaRepository, Vend
 			@RequestParam("dataFinal") Date dataFinal, @RequestParam(required = false) Long codVendedor) {
 		return vendaService.listarDadosRelatorioProdutoColaborador(dataInicial, dataFinal, codVendedor);
 	}
-	
-	@PutMapping("/setarVendasComoPago")
-	public void setarVendasComoPago(@RequestBody List<Long> listaCodigosVenda) {
-		vendaService.setarVendasComoPago(listaCodigosVenda);
+
+	@PutMapping("/setarVendasItensVendaComoPago")
+	public void setarVendasItensVendaComoPago(@RequestBody List<Long> listaCodigosVenda,
+			@RequestParam("isVenda") Boolean isVenda) {
+		vendaService.setarVendasIntesVendaComoPago(listaCodigosVenda, isVenda);
 	}
 
 }

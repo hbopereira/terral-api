@@ -5,6 +5,7 @@ import java.util.Date;
 
 public interface ItemVendaResumo {
 
+	Long getCod();
 	String getDescricao();
 	BigDecimal getValorColaborador();
 	Integer getQuantidade();
@@ -13,4 +14,5 @@ public interface ItemVendaResumo {
 	BigDecimal getValor();
 	String getNomeVendedor();
 	String getFormaPagamento();
+	Boolean getPago();
 }

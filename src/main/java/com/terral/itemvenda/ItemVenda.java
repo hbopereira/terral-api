@@ -25,7 +25,7 @@ public class ItemVenda extends BaseEntity implements Serializable {
 	private Integer codProduto;
 	private String nomeColaborador;
 	private Integer porcentagemColaborador;
-	
+	private Boolean pago;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "venda_cod")
@@ -98,7 +98,13 @@ public class ItemVenda extends BaseEntity implements Serializable {
 	public void setPorcentagemColaborador(Integer porcentagemColaborador) {
 		this.porcentagemColaborador = porcentagemColaborador;
 	}
-	
-	
+
+	public Boolean getPago() {
+		return pago;
+	}
+
+	public void setPago(Boolean pago) {
+		this.pago = pago;
+	}
 
 }
