@@ -19,7 +19,7 @@ import com.terral.base.BaseController;
 import com.terral.constantes.ConstantesRest;
 import com.terral.resumo.ProdutoResumo;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://terral-front.vercel.app")
 @RestController
 @RequestMapping(ConstantesRest.PATH_PRODUTOS)
 public class ProdutoController extends BaseController<Produto, ProdutoRepository, ProdutoService> {
