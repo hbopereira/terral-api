@@ -14,13 +14,21 @@ import com.terral.resumo.ProdutoResumo;
 public interface ProdutoRepository extends BaseRepository<Produto>{
 	
 	@Query(value="SELECT p.cod as cod_produto, c.cod as cod_secao, co.cod as cod_colaborador, "
-			+ " p.descricao_produto, c.descricao_secao, co.nome, p.valor, p.valor_colaborador, p.porcentagem_colaborador, p.quantidade, p.tem_estoque FROM produto p "
+			+ " p.descricao_produto, c.descricao_secao, co.nome, p.valor, p.valor_colaborador, "
+			+ " p.porcentagem_colaborador, p.quantidade, p.tem_estoque, p.cod_fabricante, p.cod_loja FROM produto p "
 			+ " LEFT JOIN secao c on c.cod = p.secao_cod "
 			+ " LEFT JOIN colaborador co ON co.cod = p.colaborador_cod "
 			+ " WHERE (:colaboradorCod IS NULL OR p.colaborador_cod=:colaboradorCod) "
 			+ " AND (:secaoCod IS NULL OR p.secao_cod=:secaoCod) "
-			+ " AND (:descricao IS NULL OR LOWER(p.descricao_produto) LIKE %:descricao% ) ", nativeQuery = true)
-	public List<ProdutoResumo> listarPorColaboradorESecao(@Param("colaboradorCod") Long colaboradorCod, @Param("secaoCod") Long secaoCod, @Param("descricao") String descricao);
+			+ " AND ((cast(:descricao as VARCHAR) IS NULL ) OR LOWER(p.descricao_produto) LIKE %:descricao%) " 
+			+ " AND ((cast(:fabricante as VARCHAR) IS NULL ) OR LOWER(p.cod_fabricante) LIKE %:fabricante%) "
+			+ " AND ((cast(:codLoja as VARCHAR) IS NULL ) OR LOWER(p.cod_loja) LIKE %:codLoja%) ", nativeQuery = true)
+	public List<ProdutoResumo> listarPorColaboradorESecao(@Param("colaboradorCod") Long colaboradorCod,
+			                                              @Param("secaoCod") Long secaoCod, 
+			                                              @Param("descricao") String descricao,
+			                                              @Param("fabricante") String codFabricante,
+			                                              @Param("codLoja") String codLoja
+			                                              );
 	
 	@Modifying
 	@Query(value="UPDATE Produto SET quantidade =:quantidade WHERE cod =:produtoCod ")

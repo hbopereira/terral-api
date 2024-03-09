@@ -14,7 +14,10 @@ import com.terral.base.BaseRepository;
 @Repository
 public interface ComandaRepository extends BaseRepository<Comanda> {
 
-	@Query(value = "SELECT c FROM Comanda c WHERE (:codVendedor IS NULL OR c.vendedor.cod =:codVendedor) AND c.dataComanda BETWEEN :dataInicial AND :dataFinal ")
+	@Query(value = "SELECT c FROM Comanda c "
+			+ "WHERE (:codVendedor IS NULL OR c.vendedor.cod =:codVendedor) "
+			+ "AND c.dataComanda BETWEEN :dataInicial AND :dataFinal "
+			+ "ORDER BY c.status ASC ")
 	public List<Comanda> listarPorDataEVendedor(@Param("dataInicial") Date dataInicial,
 			@Param("dataFinal") Date dataFinal, @Param("codVendedor") Long codVendedor);
 	

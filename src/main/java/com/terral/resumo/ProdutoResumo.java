@@ -14,4 +14,6 @@ public interface ProdutoResumo {
 	Integer getPorcentagem_Colaborador();
 	Integer getQuantidade();
 	Integer getTem_Estoque();
+	String getCod_Fabricante();
+	String getCod_Loja();
 }

@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.terral.base.BaseController;
 import com.terral.constantes.ConstantesRest;
+import com.terral.produto.Produto;
 import com.terral.resumo.ItemVendaResumo;
+import com.terral.resumo.VendaResumo;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -27,6 +29,7 @@ public class VendaController extends BaseController<Venda, VendaRepository, Vend
 
 	@Autowired
 	private VendaService vendaService;
+
 
 	@PostMapping(value = "/salvar")
 	public ResponseEntity<String> salvar(@RequestBody Venda venda) {
@@ -42,6 +45,11 @@ public class VendaController extends BaseController<Venda, VendaRepository, Vend
 	public List<Venda> listarPorDataEVendedor(@RequestParam("dataInicial") Date dataInicial,
 			@RequestParam("dataFinal") Date dataFinal, @RequestParam(required = false) Long codVendedor) {
 		return vendaService.listarPorDataEVendedor(dataInicial, dataFinal, codVendedor);
+	}
+	
+	@GetMapping("/listarVendasProdutoSecao")
+	public List<VendaResumo> listarVendasProdutoSecao(){
+		return vendaService.listarVendasProdutoSecao();
 	}
 
 	@GetMapping("/listarPorDia")

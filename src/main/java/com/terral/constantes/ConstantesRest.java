@@ -14,6 +14,8 @@ public class ConstantesRest {
 	public static final String PATH_COLABORADORES = "/api/colaboradores";
 	public static final String PATH_VENDAS = "/api/vendas";
 	public static final String PATH_COMANDAS = "/api/comandas";
+	public static final String PATH_LANCAMENTOS = "/api/lancamentos";
+	public static final String PATH_PESSOAS = "/api/pessoas";
 	
 
 }

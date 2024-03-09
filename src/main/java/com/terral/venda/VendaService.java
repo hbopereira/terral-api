@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.terral.base.BaseService;
 import com.terral.itemvenda.ItemVendaRepository;
 import com.terral.resumo.ItemVendaResumo;
+import com.terral.resumo.VendaResumo;
 
 import jakarta.transaction.Transactional;
 
@@ -47,6 +48,7 @@ public class VendaService extends BaseService<Venda, VendaRepository> {
 		}
 	}
 	
+	@Transactional
 	public List<Venda> listarPorDia(){
 		LocalDate mesReferencia = LocalDate.now();
 		LocalDate primeiroDia = mesReferencia.withDayOfMonth(1);
@@ -54,6 +56,16 @@ public class VendaService extends BaseService<Venda, VendaRepository> {
 		Date dataInicial = java.sql.Date.valueOf(primeiroDia);
 		Date dataFinal = java.sql.Date.valueOf(ultimoDia);
 		return vendaRepository.listarPorDataEVendedor(dataInicial, dataFinal, null);
+	}
+	
+	@Transactional
+	public List<VendaResumo> listarVendasProdutoSecao(){
+		LocalDate mesReferencia = LocalDate.now();
+		LocalDate primeiroDia = mesReferencia.withDayOfMonth(1);
+		LocalDate ultimoDia = mesReferencia.withDayOfMonth(mesReferencia.lengthOfMonth());
+		Date dataInicial = java.sql.Date.valueOf(primeiroDia);
+		Date dataFinal = java.sql.Date.valueOf(ultimoDia);
+		return vendaRepository.listarVendasProdutoSecao(dataInicial, dataFinal);
 	}
 
 	@Transactional

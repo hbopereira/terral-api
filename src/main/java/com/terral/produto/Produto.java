@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import com.terral.base.BaseEntity;
 import com.terral.colaborador.Colaborador;
 import com.terral.secao.Secao;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -20,6 +22,8 @@ public class Produto extends BaseEntity {
 	private Integer porcentagemColaborador;
 	private Integer quantidade;
 	private Integer temEstoque;
+	private String codFabricante;
+	private String codLoja;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "secao_cod", referencedColumnName = "cod", nullable = false)
@@ -98,6 +102,22 @@ public class Produto extends BaseEntity {
 
 	public void setTemEstoque(Integer temEstoque) {
 		this.temEstoque = temEstoque;
+	}
+
+	public String getCodFabricante() {
+		return codFabricante;
+	}
+
+	public void setCodFabricante(String codFabricante) {
+		this.codFabricante = codFabricante;
+	}
+
+	public String getCodLoja() {
+		return codLoja;
+	}
+
+	public void setCodLoja(String codLoja) {
+		this.codLoja = codLoja;
 	}
 
 }

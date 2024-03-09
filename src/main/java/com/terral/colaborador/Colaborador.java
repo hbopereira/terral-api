@@ -1,4 +1,5 @@
 package com.terral.colaborador;
+
 import com.terral.base.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -9,9 +10,18 @@ public class Colaborador extends BaseEntity {
 
 	private String nome;
 	private String senha;
+	private Integer porcentagem;
 
 	public Colaborador() {
 
+	}
+
+	public Integer getPorcentagem() {
+		return porcentagem;
+	}
+
+	public void setPorcentagem(Integer porcentagem) {
+		this.porcentagem = porcentagem;
 	}
 
 	public String getNome() {
@@ -21,7 +31,7 @@ public class Colaborador extends BaseEntity {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getSenha() {
 		return senha;
 	}
@@ -29,8 +39,5 @@ public class Colaborador extends BaseEntity {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
-	
-	
 
 }
