@@ -22,6 +22,7 @@ public class ItemVenda extends BaseEntity implements Serializable {
 	private BigDecimal valor;
 	private BigDecimal valorColaborador;
 	private Integer quantidade;
+	private Integer quantidadeGramas;
 	private Integer codProduto;
 	private String nomeColaborador;
 	private Integer porcentagemColaborador;
@@ -105,6 +106,14 @@ public class ItemVenda extends BaseEntity implements Serializable {
 
 	public void setPago(Boolean pago) {
 		this.pago = pago;
+	}
+
+	public Integer getQuantidadeGramas() {
+		return quantidadeGramas;
+	}
+
+	public void setQuantidadeGramas(Integer quantidadeGramas) {
+		this.quantidadeGramas = quantidadeGramas;
 	}
 
 }

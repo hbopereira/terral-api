@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.terral.base.BaseService;
+import com.terral.produto.ProdutoService;
 
 import jakarta.transaction.Transactional;
 

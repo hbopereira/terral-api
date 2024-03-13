@@ -22,9 +22,11 @@ public class ItemComanda extends BaseEntity implements Serializable {
 	private BigDecimal valor;
 	private BigDecimal valorColaborador;
 	private Integer quantidade;
+	private Integer quantidadeGramas;
 	private Integer codProduto;
 	private Integer porcentagemColaborador;
 	private String nomeColaborador;
+	
 	
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
@@ -97,7 +99,13 @@ public class ItemComanda extends BaseEntity implements Serializable {
 	public void setNomeColaborador(String nomeColaborador) {
 		this.nomeColaborador = nomeColaborador;
 	}
-	
-	
+
+	public Integer getQuantidadeGramas() {
+		return quantidadeGramas;
+	}
+
+	public void setQuantidadeGramas(Integer quantidadeGramas) {
+		this.quantidadeGramas = quantidadeGramas;
+	}
 
 }

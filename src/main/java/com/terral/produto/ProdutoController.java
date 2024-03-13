@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.terral.base.BaseController;
+import com.terral.colaborador.Colaborador;
 import com.terral.constantes.ConstantesRest;
 import com.terral.resumo.ProdutoResumo;
 
@@ -40,6 +41,12 @@ public class ProdutoController extends BaseController<Produto, ProdutoRepository
 	@PutMapping("/setarQuantidade")
 	public ResponseEntity<Void> setarQuantidade(@RequestBody Produto produto) {
 		produtoService.setarQuantidade(produto);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+	
+	@PutMapping("/setarPorcentagem")
+	public ResponseEntity<Void> setarPorcentagemProduto(@RequestBody Colaborador colaborador) {
+		produtoService.setarPorcentagemProduto(colaborador.getCod(), colaborador.getPorcentagem());
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 

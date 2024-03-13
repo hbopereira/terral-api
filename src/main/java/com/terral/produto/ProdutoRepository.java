@@ -22,7 +22,8 @@ public interface ProdutoRepository extends BaseRepository<Produto>{
 			+ " AND (:secaoCod IS NULL OR p.secao_cod=:secaoCod) "
 			+ " AND ((cast(:descricao as VARCHAR) IS NULL ) OR LOWER(p.descricao_produto) LIKE %:descricao%) " 
 			+ " AND ((cast(:fabricante as VARCHAR) IS NULL ) OR LOWER(p.cod_fabricante) LIKE %:fabricante%) "
-			+ " AND ((cast(:codLoja as VARCHAR) IS NULL ) OR LOWER(p.cod_loja) LIKE %:codLoja%) ", nativeQuery = true)
+			+ " AND ((cast(:codLoja as VARCHAR) IS NULL ) OR LOWER(p.cod_loja) LIKE %:codLoja%) "
+			+ " ORDER BY p.descricao_produto ", nativeQuery = true)
 	public List<ProdutoResumo> listarPorColaboradorESecao(@Param("colaboradorCod") Long colaboradorCod,
 			                                              @Param("secaoCod") Long secaoCod, 
 			                                              @Param("descricao") String descricao,
@@ -34,8 +35,13 @@ public interface ProdutoRepository extends BaseRepository<Produto>{
 	@Query(value="UPDATE Produto SET quantidade =:quantidade WHERE cod =:produtoCod ")
 	public void setarQuantidade(@Param("produtoCod") Long produtoCod, @Param("quantidade") Integer quantidade);
 	
+	@Modifying
+	@Query(value="UPDATE Produto SET porcentagemColaborador =:porcentagem WHERE colaborador.cod =:colaboradorCod ")
+	public void setarPorcentagemProduto(@Param("colaboradorCod") Long colaboradorCod, @Param("porcentagem") Integer porcentagem);
+	
 	@Query(value = "SELECT p.quantidade, p.tem_estoque from produto p WHERE p.cod =:produtoCod ", nativeQuery = true)
 	public ProdutoResumo devolverQuantidadeProduto(@Param("produtoCod") Long produtoCod);
+	
 	
 
 }

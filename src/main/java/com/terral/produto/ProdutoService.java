@@ -28,6 +28,16 @@ public class ProdutoService extends BaseService<Produto, ProdutoRepository> {
 	}
 
 	@Transactional
+	public void setarPorcentagemProduto(Long colaboradorCod, Integer porcentagem) {
+		List<ProdutoResumo> produtos = produtoRepository.listarPorColaboradorESecao(colaboradorCod, null, null, null,null);
+		if (produtos.size() > 0) {
+			produtos.forEach(produto -> {
+				produtoRepository.setarPorcentagemProduto(produto.getCod_Colaborador(), porcentagem);
+			});
+		}
+	}
+
+	@Transactional
 	public List<ProdutoResumo> listarPorColaboradorESecao(Long colaboradorCod, Long secaoCod, String descricao,
 			String codFabricante, String codLoja) {
 		Boolean isVazio = false;
@@ -43,7 +53,8 @@ public class ProdutoService extends BaseService<Produto, ProdutoRepository> {
 		if (isVazio) {
 			codLoja = null;
 		}
-		return produtoRepository.listarPorColaboradorESecao(colaboradorCod, secaoCod, descricao, codFabricante, codLoja);
+		return produtoRepository.listarPorColaboradorESecao(colaboradorCod, secaoCod, descricao, codFabricante,
+				codLoja);
 	}
 
 	@Transactional
