@@ -26,6 +26,8 @@ public class ItemComanda extends BaseEntity implements Serializable {
 	private Integer codProduto;
 	private Integer porcentagemColaborador;
 	private String nomeColaborador;
+	private String codRandom;
+	private Boolean usaGramas;
 	
 	
 
@@ -107,5 +109,25 @@ public class ItemComanda extends BaseEntity implements Serializable {
 	public void setQuantidadeGramas(Integer quantidadeGramas) {
 		this.quantidadeGramas = quantidadeGramas;
 	}
+
+	public Boolean getUsaGramas() {
+		return usaGramas;
+	}
+
+	public void setUsaGramas(Boolean usaGramas) {
+		this.usaGramas = usaGramas;
+	}
+
+	public String getCodRandom() {
+		return codRandom;
+	}
+
+	public void setCodRandom(String codRandom) {
+		this.codRandom = codRandom;
+	}
+	
+	
+	
+	
 
 }
