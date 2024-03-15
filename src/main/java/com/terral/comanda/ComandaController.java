@@ -22,8 +22,9 @@ import com.terral.constantes.ConstantesRest;
 import com.terral.itemcomanda.ItemComanda;
 import com.terral.produto.Produto;
 
-@CrossOrigin(origins = "https://terral-front.vercel.app")
+
 @RestController
+@CrossOrigin(origins = ConstantesRest.PATH_PRODUCAO)
 @RequestMapping(ConstantesRest.PATH_COMANDAS)
 public class ComandaController extends BaseController<Comanda, ComandaRepository, ComandaService> {
 

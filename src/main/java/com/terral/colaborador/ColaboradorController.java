@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.terral.base.BaseController;
 import com.terral.constantes.ConstantesRest;
 
-@CrossOrigin(origins = "https://terral-front.vercel.app")
+
 @RestController
+@CrossOrigin(origins = ConstantesRest.PATH_PRODUCAO)
 @RequestMapping(ConstantesRest.PATH_COLABORADORES)
 public class ColaboradorController extends BaseController<Colaborador, ColaboradorRepository, ColaboradorService> {
 

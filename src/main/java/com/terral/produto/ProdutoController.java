@@ -20,8 +20,9 @@ import com.terral.colaborador.Colaborador;
 import com.terral.constantes.ConstantesRest;
 import com.terral.resumo.ProdutoResumo;
 
-@CrossOrigin(origins = "https://terral-front.vercel.app")
+
 @RestController
+@CrossOrigin(origins = ConstantesRest.PATH_PRODUCAO)
 @RequestMapping(ConstantesRest.PATH_PRODUTOS)
 public class ProdutoController extends BaseController<Produto, ProdutoRepository, ProdutoService> {
 

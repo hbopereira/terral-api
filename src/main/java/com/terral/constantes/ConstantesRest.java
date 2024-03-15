@@ -17,5 +17,8 @@ public class ConstantesRest {
 	public static final String PATH_LANCAMENTOS = "/api/lancamentos";
 	public static final String PATH_PESSOAS = "/api/pessoas";
 	
+	/*producao */
+	public static final String PATH_PRODUCAO = "https://terral-front.vercel.app";
+	
 
 }

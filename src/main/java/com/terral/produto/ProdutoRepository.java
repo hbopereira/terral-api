@@ -20,7 +20,7 @@ public interface ProdutoRepository extends BaseRepository<Produto>{
 			+ " LEFT JOIN colaborador co ON co.cod = p.colaborador_cod "
 			+ " WHERE (:colaboradorCod IS NULL OR p.colaborador_cod=:colaboradorCod) "
 			+ " AND (:secaoCod IS NULL OR p.secao_cod=:secaoCod) "
-			+ " AND ((cast(:descricao as VARCHAR) IS NULL ) OR LOWER(p.descricao_produto) LIKE %:descricao%) " 
+			+ " AND ((cast(:descricao as VARCHAR) IS NULL ) OR LOWER(p.descricao_produto) ILIKE %:descricao%) " 
 			+ " AND ((cast(:fabricante as VARCHAR) IS NULL ) OR LOWER(p.cod_fabricante) LIKE %:fabricante%) "
 			+ " AND ((cast(:codLoja as VARCHAR) IS NULL ) OR LOWER(p.cod_loja) LIKE %:codLoja%) "
 			+ " ORDER BY p.descricao_produto ", nativeQuery = true)

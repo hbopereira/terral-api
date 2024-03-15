@@ -22,8 +22,9 @@ import com.terral.produto.Produto;
 import com.terral.resumo.ItemVendaResumo;
 import com.terral.resumo.VendaResumo;
 
-@CrossOrigin(origins = "https://terral-front.vercel.app")
+
 @RestController
+@CrossOrigin(origins = ConstantesRest.PATH_PRODUCAO)
 @RequestMapping(ConstantesRest.PATH_VENDAS)
 public class VendaController extends BaseController<Venda, VendaRepository, VendaService> {
 
