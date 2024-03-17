@@ -10,6 +10,7 @@ public class Colaborador extends BaseEntity {
 
 	private String nome;
 	private String senha;
+	private String papel;
 	private Integer porcentagem;
 
 	public Colaborador() {
@@ -39,5 +40,15 @@ public class Colaborador extends BaseEntity {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public String getPapel() {
+		return papel;
+	}
+
+	public void setPapel(String papel) {
+		this.papel = papel;
+	}
+	
+	
 
 }

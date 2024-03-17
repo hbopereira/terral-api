@@ -11,5 +11,8 @@ import com.terral.base.BaseRepository;
 @Repository
 public interface ColaboradorRepository extends BaseRepository<Colaborador>{
 	
+	@Query(value = "SELECT c FROM Colaborador c WHERE c.nome ILIKE %:nome% "
+			+ "AND c.senha=:senha  ")
+	public Colaborador devolverColaborador(@Param("nome") String nome, @Param("senha") String senha);
 
 }
